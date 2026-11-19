@@ -16,6 +16,12 @@ export function lintSkill(text, directoryName) {
   if (fields.name && fields.name !== directoryName) {
     problems.push(`name "${fields.name}" does not match directory "${directoryName}"`);
   }
+  if (fields.name && fields.name.length > 64) {
+    problems.push(`name is ${fields.name.length} characters long; the limit is 64`);
+  }
+  if (fields.description && fields.description.length > 1024) {
+    problems.push(`description is ${fields.description.length} characters long; the limit is 1024`);
+  }
   return problems;
 }
 

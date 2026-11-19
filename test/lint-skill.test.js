@@ -41,3 +41,22 @@ test('a name with characters other than lowercase letters, digits and hyphens is
     'name "My_Skill" must use only lowercase letters, digits and hyphens',
   ]);
 });
+
+test('a name longer than 64 characters is reported', () => {
+  const name = 'a'.repeat(65);
+  assert.deepEqual(lintSkill(skill({ name }), name), [
+    'name is 65 characters long; the limit is 64',
+  ]);
+});
+
+test('a name of exactly 64 characters is accepted', () => {
+  const name = 'a'.repeat(64);
+  assert.deepEqual(lintSkill(skill({ name }), name), []);
+});
+
+test('a description longer than 1024 characters is reported', () => {
+  const description = 'd'.repeat(1025);
+  assert.deepEqual(lintSkill(skill({ description }), 'my-skill'), [
+    'description is 1025 characters long; the limit is 1024',
+  ]);
+});
