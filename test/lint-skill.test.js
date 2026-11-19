@@ -14,3 +14,13 @@ test('a file without frontmatter is reported', () => {
     'missing frontmatter: the file must start with a --- delimited block',
   ]);
 });
+
+test('a missing name is reported', () => {
+  const text = '---\ndescription: Use when testing.\n---\n';
+  assert.deepEqual(lintSkill(text, 'my-skill'), ['missing required field: name']);
+});
+
+test('a missing description is reported', () => {
+  const text = '---\nname: my-skill\n---\n';
+  assert.deepEqual(lintSkill(text, 'my-skill'), ['missing required field: description']);
+});
