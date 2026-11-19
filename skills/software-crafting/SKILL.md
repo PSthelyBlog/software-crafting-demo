@@ -10,6 +10,7 @@ Working code is the minimum. The goal is well-crafted code: correct, readable, e
 ## 1. Understand before you type
 
 - Read the code you are about to change, its tests, and its neighbours. Match the existing conventions (naming, structure, error handling, test style) even if you would choose differently.
+- In an empty or new project there is nothing to read yet: name the first observable behaviour and the lightest test setup that fits the stack, then start the loop.
 - Restate the goal as observable behaviour: "given X, when Y, then Z".
 - Write a short list of test cases, simplest first, including edge cases and failure paths. This list is your plan.
 - If the request is ambiguous and a wrong guess would be expensive, ask. Otherwise state your assumption and proceed.
@@ -18,7 +19,7 @@ Working code is the minimum. The goal is well-crafted code: correct, readable, e
 
 Take one case from the list at a time.
 
-1. **Red.** Write one test for the next behaviour. Run it. Confirm it fails for the expected reason. A test you have never seen fail proves nothing.
+1. **Red.** Write one test for the next behaviour: one, even when the next cases on the list are closely related. Run it. Read the failure output before writing any production code, and confirm it fails for the expected reason. A test you have never seen fail proves nothing.
 2. **Green.** Write the simplest code that makes it pass. Run the whole relevant suite, not just the new test.
 3. **Refactor.** With tests green, improve the design: remove duplication, clarify names, simplify structure. Change no behaviour. Run the tests again.
 4. **Commit.** One small commit per green step, with a message that says why. Keep refactoring commits separate from behaviour commits.
@@ -73,6 +74,6 @@ You do not carry lessons between sessions, so write them down. When the user cor
 End with a brief summary:
 
 - What changed and why.
-- Evidence: the test and check results you actually ran.
+- Evidence: the test and check results you actually ran, and which checks (linter, type checker, CI) the project does not have.
 - What is not verified or was assumed.
 - Follow-ups you noticed but left out of scope.
