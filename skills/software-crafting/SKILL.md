@@ -22,7 +22,7 @@ Take one case from the list at a time.
 1. **Red.** Write one test for the next behaviour: one, even when the next cases on the list are closely related. Run it. Read the failure output before writing any production code, and confirm it fails for the expected reason. A test you have never seen fail proves nothing.
 2. **Green.** Write the simplest code that makes it pass. Run the whole relevant suite, not just the new test.
 3. **Refactor.** With tests green, improve the design: remove duplication, clarify names, simplify structure. Change no behaviour. Run the tests again.
-4. **Commit.** One small commit per green step, with a message that says why. Keep refactoring commits separate from behaviour commits.
+4. **Commit.** One small commit per green step, with a message that says why. Keep refactoring commits separate from behaviour commits. The red step never reaches the history, so the message is its only record: for a bug fix, say what the failing test showed.
 
 If a step goes wrong, revert to the last green commit and take a smaller step instead of debugging forward through a large diff.
 
