@@ -30,3 +30,8 @@ test('a name that differs from the directory name is reported', () => {
     'name "other-skill" does not match directory "my-skill"',
   ]);
 });
+
+test('quoted field values are read without their quotes', () => {
+  const text = skill({ name: '"my-skill"', description: "'Use when testing.'" });
+  assert.deepEqual(lintSkill(text, 'my-skill'), []);
+});

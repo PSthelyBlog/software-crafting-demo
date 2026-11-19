@@ -21,7 +21,12 @@ function parseFields(frontmatter) {
   for (const line of frontmatter.split('\n')) {
     const separator = line.indexOf(':');
     if (separator === -1) continue;
-    fields[line.slice(0, separator).trim()] = line.slice(separator + 1).trim();
+    fields[line.slice(0, separator).trim()] = unquote(line.slice(separator + 1).trim());
   }
   return fields;
+}
+
+function unquote(value) {
+  const quoted = /^(["'])(.*)\1$/.exec(value);
+  return quoted ? quoted[2] : value;
 }
