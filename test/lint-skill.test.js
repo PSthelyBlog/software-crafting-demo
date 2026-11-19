@@ -24,3 +24,9 @@ test('a missing description is reported', () => {
   const text = '---\nname: my-skill\n---\n';
   assert.deepEqual(lintSkill(text, 'my-skill'), ['missing required field: description']);
 });
+
+test('a name that differs from the directory name is reported', () => {
+  assert.deepEqual(lintSkill(skill({ name: 'other-skill' }), 'my-skill'), [
+    'name "other-skill" does not match directory "my-skill"',
+  ]);
+});

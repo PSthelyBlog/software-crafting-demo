@@ -7,9 +7,13 @@ export function lintSkill(text, directoryName) {
     return ['missing frontmatter: the file must start with a --- delimited block'];
   }
   const fields = parseFields(match[1]);
-  return REQUIRED_FIELDS.filter((field) => !fields[field]).map(
+  const problems = REQUIRED_FIELDS.filter((field) => !fields[field]).map(
     (field) => `missing required field: ${field}`,
   );
+  if (fields.name && fields.name !== directoryName) {
+    problems.push(`name "${fields.name}" does not match directory "${directoryName}"`);
+  }
+  return problems;
 }
 
 function parseFields(frontmatter) {
