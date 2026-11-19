@@ -10,6 +10,9 @@ export function lintSkill(text, directoryName) {
   const problems = REQUIRED_FIELDS.filter((field) => !fields[field]).map(
     (field) => `missing required field: ${field}`,
   );
+  if (fields.name && !/^[a-z0-9-]+$/.test(fields.name)) {
+    problems.push(`name "${fields.name}" must use only lowercase letters, digits and hyphens`);
+  }
   if (fields.name && fields.name !== directoryName) {
     problems.push(`name "${fields.name}" does not match directory "${directoryName}"`);
   }

@@ -35,3 +35,9 @@ test('quoted field values are read without their quotes', () => {
   const text = skill({ name: '"my-skill"', description: "'Use when testing.'" });
   assert.deepEqual(lintSkill(text, 'my-skill'), []);
 });
+
+test('a name with characters other than lowercase letters, digits and hyphens is reported', () => {
+  assert.deepEqual(lintSkill(skill({ name: 'My_Skill' }), 'My_Skill'), [
+    'name "My_Skill" must use only lowercase letters, digits and hyphens',
+  ]);
+});
