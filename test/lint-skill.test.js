@@ -65,3 +65,8 @@ test('regression: a skill saved with Windows line endings is linted like any oth
   const text = skill().replaceAll('\n', '\r\n');
   assert.deepEqual(lintSkill(text, 'my-skill'), []);
 });
+
+test('regression: frontmatter that ends the file without a trailing newline is still found', () => {
+  const text = '---\nname: my-skill\ndescription: Use when testing.\n---';
+  assert.deepEqual(lintSkill(text, 'my-skill'), []);
+});

@@ -1,4 +1,4 @@
-const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
+const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
 const MAX_LENGTH = { name: 64, description: 1024 };
 const REQUIRED_FIELDS = Object.keys(MAX_LENGTH);
 const PORTABLE_NAME = /^[a-z0-9-]+$/;
