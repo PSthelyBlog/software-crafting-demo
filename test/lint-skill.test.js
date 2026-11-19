@@ -60,3 +60,8 @@ test('a description longer than 1024 characters is reported', () => {
     'description is 1025 characters long; the limit is 1024',
   ]);
 });
+
+test('regression: a skill saved with Windows line endings is linted like any other', () => {
+  const text = skill().replaceAll('\n', '\r\n');
+  assert.deepEqual(lintSkill(text, 'my-skill'), []);
+});

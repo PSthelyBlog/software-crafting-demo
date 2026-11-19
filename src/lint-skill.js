@@ -1,4 +1,4 @@
-const FRONTMATTER = /^---\n([\s\S]*?)\n---\n/;
+const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
 const MAX_LENGTH = { name: 64, description: 1024 };
 const REQUIRED_FIELDS = Object.keys(MAX_LENGTH);
 const PORTABLE_NAME = /^[a-z0-9-]+$/;
@@ -42,7 +42,7 @@ function lengthProblems(fields) {
 
 function parseFields(frontmatter) {
   const fields = {};
-  for (const line of frontmatter.split('\n')) {
+  for (const line of frontmatter.split(/\r?\n/)) {
     const separator = line.indexOf(':');
     if (separator === -1) continue;
     fields[line.slice(0, separator).trim()] = unquote(line.slice(separator + 1).trim());
