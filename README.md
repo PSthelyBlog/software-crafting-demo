@@ -1,7 +1,7 @@
 # software-crafting-demo
 
 A showcase for the [`software-crafting`](skills/software-crafting/SKILL.md) skill
-for Claude Code: test-first work in small green steps, explicit refactoring,
+for Claude Code ([upstream repository](https://github.com/PSthelyBlog/software-crafting)): test-first work in small green steps, explicit refactoring,
 fresh-eyes review, and an honest report.
 
 The showcase is the repository itself. The skill was used to build `skill-lint`,
@@ -41,6 +41,7 @@ walkthrough.
 | `00d0565` Add the skill-lint command | the skill passes its own linter | 2. The loop |
 | `3642ac7` Fix: Windows line endings | bug reproduced by a failing test, then fixed | 3. Special cases |
 | `ff5ff16` Fix: no trailing newline | found while re-reading the diff as a reviewer | 6. Review with fresh eyes |
+| `eba19ab`, `bd619cc` Skill: … | lessons from this first use, written back into the skill | 7. Capture what you learn |
 
 ## Known limits
 
@@ -52,9 +53,10 @@ walkthrough.
 
 ## Use the skill
 
-Copy `skills/software-crafting/` into `~/.claude/skills/` (or a project's
-`.claude/skills/`), then invoke it with `/software-crafting` or let Claude Code
-pick it up when you ask for a code change.
+The skill lives in its own repository,
+[PSthelyBlog/software-crafting](https://github.com/PSthelyBlog/software-crafting),
+which has the install instructions. The copy under `skills/software-crafting/`
+is the version this showcase was linted against.
 
 ## License
 
